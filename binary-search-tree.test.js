@@ -100,10 +100,10 @@ describe('Binary Search Tree', () => {
   });
 
   describe('numNodes()', () => {
-    test.skip('empty tree is empty', () => {
+    test('empty tree is empty', () => {
       expect(emptyTree().numNodes()).toBe(0);
     })
-    test.skip('non-empty tree isn\'t empty', () => {
+    test('non-empty tree isn\'t empty', () => {
       expect(oneTree().numNodes()).toBe(1);
       expect(twoTree().numNodes()).toBe(2);
       expect(fullTree().numNodes()).toBe(4);
@@ -111,10 +111,10 @@ describe('Binary Search Tree', () => {
   });
 
   describe('numLeaves()', () => {
-    test.skip('empty tree is empty', () => {
+    test('empty tree is empty', () => {
       expect(emptyTree().numLeaves()).toBe(0);
     })
-    test.skip('non-empty tree isn\'t empty', () => {
+    test('non-empty tree isn\'t empty', () => {
       expect(oneTree().numLeaves()).toBe(1);
       expect(twoTree().numLeaves()).toBe(1);
       expect(fullTree().numLeaves()).toBe(2);
@@ -122,7 +122,7 @@ describe('Binary Search Tree', () => {
   });
 
   describe('BONUS: doesTreeContainAverage', () => {
-    test.skip('tree does contain average', () => {
+    test('tree does contain average', () => {
       let tree = new BinarySearchTree();
       tree.add(2);
       tree.add(4);
@@ -132,7 +132,7 @@ describe('Binary Search Tree', () => {
       expect(tree.doesTreeContainAverage()).toBe(true);
     });
 
-    test.skip('tree does not contain average', () => {
+    test('tree does not contain average', () => {
       let tree = new BinarySearchTree();
       tree.add(1);
       tree.add(2);

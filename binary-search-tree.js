@@ -118,23 +118,80 @@ class BinarySearchTree {
   // DO NOT store a value like `numNodes` and increment it in add().
   // You MUST traverse the entire tree when you do this.
   numNodes() {
+    if (this.root === null) {
+      return 0;
+    }
+    let count = 1;
+    return count += this._numNodes(this.root);
+  }
 
+  _numNodes(node) {
+    let num = 0;
+    if (!node) {
+      return count;
+    }
+    if (node.left) {
+      num ++;
+      num += this._numNodes(node.left);
+    }
+    if (node.right) {
+      num ++;
+      num += this._numNodes(node.right);
+    }
+    return num;
   }
 
   // traverse the entire tree and count the total number of leaf nodes.
   // leaf nodes are nodes that have no child nodes on their left or right.
   numLeaves() {
+    if (this.root === null) {
+      return 0;
+    }
+    let leaves = 0;
+    return leaves += this._numLeaves(this.root);
+  }
 
+  _numLeaves(node) {
+    let leaves = 0;
+    if (!node.left && !node.right) {
+      leaves ++;
+    } else {
+      if (node.left) {
+        leaves += this._numLeaves(node.left);
+      }
+      if (node.right) {
+        leaves += this._numLeaves(node.right);
+      }
+    }
+    return leaves;
   }
 
   // BONUS: returns true if the tree has one node with the value
   // of the average value of all the nodes themselves. for example: 
   // true for tree with [2 4 6 8 10] because it has 6
   // false for tree with [1 2 3 4 5 6] because it has no 3.5
+  // step 1: go through tree to determine average value.
+  // step 2: go through tree again to see if it has that value.
+  // step 3: return result
   doesTreeContainAverage() {
-    // step 1: go through tree to determine average value.
-    // step 2: go through tree again to see if it has that value.
-    // step 3: return result
+    if (this.root === null) {
+      return false;
+    }
+    let nodes = this.numNodes();
+    let sum = this._doesTreeContainAverageSum(this.root);
+    let avg = sum / nodes;
+    return this.contains(avg);
+  }
+
+  _doesTreeContainAverageSum(node) {
+    let sum = node.value;
+    if (node.left) {
+      sum += this._doesTreeContainAverageSum(node.left);
+    }
+    if (node.right) {
+      sum += this._doesTreeContainAverageSum(node.right);
+    }
+    return sum;
   }
 }
 
